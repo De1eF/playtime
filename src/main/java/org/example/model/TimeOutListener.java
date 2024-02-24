@@ -1,2 +1,5 @@
-package org.example.model;public interface TimeOutListener {
+package org.example.model;
+
+public interface TimeOutListener {
+    void timeOut();
 }

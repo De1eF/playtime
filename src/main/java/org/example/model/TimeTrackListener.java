@@ -1,2 +1,7 @@
-package org.example.model;public interface TimeTrackListener {
+package org.example.model;
+
+import java.time.LocalTime;
+
+public interface TimeTrackListener {
+    void track(LocalTime time);
 }

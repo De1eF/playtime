@@ -2,17 +2,23 @@ package org.example.service;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 
-class Toaster extends JFrame {
-
-    //String of toast
-    String s;
-
-    // JWindow
+public class Toast extends JFrame {
     JWindow w;
 
-    Toaster(String s, int x, int y)
+    public Toast(String message) {
+        this(message, 100, 100);
+    }
+
+    public Toast(String message, int x, int y) {
+        this(message, x, y, 300, 100);
+    }
+
+    public Toast(String message, int x, int y, int width, int height) {
+        this(message, x, y, width, height, new Color(255, 255, 255, 240));
+    }
+
+    public Toast(String message, int x, int y, int width, int height, Color textColor)
     {
         w = new JWindow();
 
@@ -21,7 +27,7 @@ class Toaster extends JFrame {
         JPanel p = new JPanel() {
             public void paintComponent(Graphics g)
             {
-                int wid = g.getFontMetrics().stringWidth(s);
+                int wid = g.getFontMetrics().stringWidth(message);
                 int hei = g.getFontMetrics().getHeight();
 
                 g.setColor(Color.black);
@@ -30,8 +36,8 @@ class Toaster extends JFrame {
                 g.drawRect(10, 10, wid + 30, hei + 10);
 
                 // set the color of text
-                g.setColor(new Color(255, 255, 255, 240));
-                g.drawString(s, 25, 27);
+                g.setColor(textColor);
+                g.drawString(message, 25, 27);
                 int t = 250;
 
                 for (int i = 0; i < 4; i++) {
@@ -45,7 +51,7 @@ class Toaster extends JFrame {
 
         w.add(p);
         w.setLocation(x, y);
-        w.setSize(300, 100);
+        w.setSize(width, height);
     }
 
     // function to pop up the toast
