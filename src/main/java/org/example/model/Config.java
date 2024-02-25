@@ -3,6 +3,8 @@ package org.example.model;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
+import java.util.HashSet;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,18 +22,23 @@ public class Config extends FileManager {
 
     @Getter
     @Setter
-    private String selectedProgram;
+    private Set<String> selectedPrograms;
 
     @Getter
     @Setter
     private long nextTimeBankRefillOn;
 
+    @Getter
+    @Setter
+    private String password;
+
     public static final String CONFIG_URI = "./src/main/resources/config.json";
 
     private static final Config DEFAULT_CONFIG = new Config(
             "01:00:00",
-            "",
-            0
+            new HashSet<>(),
+            0,
+            ""
     );
 
     public static Gson gson = new Gson();

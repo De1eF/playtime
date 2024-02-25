@@ -4,22 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d84527d-6bf6-450c-aefa-6a3a27146da4" name="Changes" comment="First working build">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5d84527d-6bf6-450c-aefa-6a3a27146da4" name="Changes" comment="Now tracks multiple apps">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/dialog/AddProgramDialogCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/dialog/AddTimeDialogCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/dialog/DialogSetUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/dialog/PasswordSetUpDialogCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/dialog/RemoveProgramDialogCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BaseForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BaseForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BaseForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BaseForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exception/GlobalExceptionHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/TimeOutListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/TimeOutListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/TimeTrackListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/TimeTrackListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/ProcessManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/ProcessManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/TimeOutListener.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/TimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/TimeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Toast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Toast.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,15 +44,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE&quot;: &quot;right&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE&quot;: &quot;left&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\_files\0Work\IdeaProjects\playtime\src\main\java\org\example" />
@@ -96,8 +96,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708772451803</updated>
-      <workItem from="1708772453427" duration="17126000" />
+      <workItem from="1708772453427" duration="17781000" />
+      <workItem from="1708857144675" duration="1201000" />
+      <workItem from="1708859542859" duration="6962000" />
+      <workItem from="1708866523122" duration="6928000" />
     </task>
+    <task id="LOCAL-00001" summary="First working build">
+      <created>1708789627721</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708789627721</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +127,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First working build" />
-    <option name="LAST_COMMIT_MESSAGE" value="First working build" />
+    <MESSAGE value="Now tracks multiple apps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now tracks multiple apps" />
   </component>
 </project>
