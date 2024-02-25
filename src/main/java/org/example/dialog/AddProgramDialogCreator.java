@@ -1,6 +1,9 @@
 package org.example.dialog;
 
+import com.sun.jna.platform.DesktopWindow;
+import com.sun.jna.platform.WindowUtils;
 import java.awt.*;
+import java.nio.file.Path;
 import javax.swing.*;
 import org.example.Main;
 import org.example.model.Config;
@@ -25,6 +28,10 @@ public class AddProgramDialogCreator implements DialogSetUp {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, dialogWindowSize.width, dialogWindowSize.height);
 
+        //buttons container
+        JPanel panelButtons = new JPanel();
+        panelButtons.setBounds(0, 0, dialogWindowSize.width, dialogWindowSize.height);
+
         //process entry text
         JTextField addProgramTextField = new JTextField("Process name");
         addProgramTextField.setBounds(0, 50, dialogWindowSize.width, dialogWindowSize.height / 2);
@@ -39,9 +46,24 @@ public class AddProgramDialogCreator implements DialogSetUp {
             addProgramDialog.dispose();
         });
 
+        JTextArea processListText = new JTextArea();
+        processListText.setEnabled(false);
+        processListText.setBounds(0, -100, dialogWindowSize.width, -1);
+        StringBuilder stringBuilder = new StringBuilder();
+        WindowUtils.getAllWindows(true)
+                .stream()
+                .filter((dw) -> !dw.getTitle().isEmpty())
+                .map(DesktopWindow::getFilePath)
+                .map((p) -> Path.of(p).getFileName().toString())
+                .map((n) -> n.split("\\.")[0])
+                .forEach((t) -> stringBuilder.append("- ").append(t).append("\n"));
+        processListText.setText(stringBuilder.toString());
+
         //adding components to panel
-        panel.add(addProgramTextField);
-        panel.add(addProgramConfirmButton);
+        panelButtons.add(addProgramTextField);
+        panelButtons.add(addProgramConfirmButton);
+        panel.add(panelButtons);
+        panel.add(processListText);
 
         addProgramDialog.add(panel);
         addProgramDialog.pack();
