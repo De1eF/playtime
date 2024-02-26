@@ -1,4 +1,4 @@
-package org.example.model;
+package org.delef.model;
 
 import java.time.LocalTime;
 

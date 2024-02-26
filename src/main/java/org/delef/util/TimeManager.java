@@ -1,16 +1,21 @@
-package org.example.service;
+package org.delef.util;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.model.TimeTrackListener;
+import org.delef.model.TimeTrackListener;
 
 public class TimeManager implements Runnable {
 
     @Getter
     @Setter
     private LocalTime time;
-    private final TimeTrackListener onTimeChangedListener;
+    @Getter
+    private final List<TimeTrackListener> onTimeChangedListener = new ArrayList<>();
 
     @Getter
     @Setter
@@ -19,21 +24,21 @@ public class TimeManager implements Runnable {
     public TimeManager(LocalTime time,
                        TimeTrackListener onTimeChangedListener) {
         this.time = time;
-        this.onTimeChangedListener = onTimeChangedListener;
+        this.onTimeChangedListener.add(onTimeChangedListener);
     }
 
     public void Engage() {
-        long timestamp = System.currentTimeMillis();
-        while (true) {
-            if (System.currentTimeMillis() > timestamp + 1000) {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
                 if (enabled) {
                     //only reduce remaining time if enabled
                     time = time.minusSeconds(1);
                 }
-                onTimeChangedListener.track(time);
-                timestamp = System.currentTimeMillis();
+                onTimeChangedListener.forEach(l -> l.track(time));
             }
-        }
+        }, 0, 1000);
     }
 
     @Override

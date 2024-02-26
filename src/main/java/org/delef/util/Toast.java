@@ -1,4 +1,4 @@
-package org.example.service;
+package org.delef.util;
 
 import java.awt.*;
 import javax.swing.*;

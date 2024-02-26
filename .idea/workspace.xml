@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="playtime:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d84527d-6bf6-450c-aefa-6a3a27146da4" name="Changes" comment="Shows currently opened apps when adding">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/playtime_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/delef/dialog/ExitDialogCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dialog/AddProgramDialogCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dialog/AddProgramDialogCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/ProcessManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/ProcessManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BaseForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/BaseForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BaseForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/BaseForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dialog/AddProgramDialogCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/dialog/AddProgramDialogCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dialog/AddTimeDialogCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/dialog/AddTimeDialogCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dialog/DialogSetUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/dialog/DialogSetUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dialog/PasswordSetUpDialogCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/dialog/FirstLaunchDialogCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dialog/RemoveProgramDialogCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/dialog/RemoveProgramDialogCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/model/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/TimeTrackListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/model/TimeTrackListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/util/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/ProcessManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/util/ProcessManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/TimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/util/TimeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Toast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/util/Toast.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,21 +65,28 @@
     &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE&quot;: &quot;right&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE&quot;: &quot;left&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\_files\0Work\IdeaProjects\playtime\src\main\java\org\example" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.delef.dialog" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="BaseForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.BaseForm" />
+      <option name="MAIN_CLASS_NAME" value="org.delef.BaseForm" />
       <module name="playtime" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.delef.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -66,8 +95,21 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+      <option name="MAIN_CLASS_NAME" value="org.delef.Main" />
       <module name="playtime" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SystemTrayHider" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.delef.service.SystemTrayHider" />
+      <module name="playtime" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.delef.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -77,7 +119,7 @@
       <module name="playtime" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.service.*" />
+          <option name="PATTERN" value="org.delef.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -88,6 +130,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.SystemTrayHider" />
         <item itemvalue="Application.WindowFinder" />
         <item itemvalue="Application.BaseForm" />
       </list>
@@ -104,7 +147,14 @@
       <workItem from="1708772453427" duration="17781000" />
       <workItem from="1708857144675" duration="1201000" />
       <workItem from="1708859542859" duration="6962000" />
-      <workItem from="1708866523122" duration="8990000" />
+      <workItem from="1708866523122" duration="13345000" />
+      <workItem from="1708880045527" duration="1449000" />
+      <workItem from="1708883287480" duration="348000" />
+      <workItem from="1708887688314" duration="13000" />
+      <workItem from="1708887751969" duration="350000" />
+      <workItem from="1708891741938" duration="3896000" />
+      <workItem from="1708937008773" duration="3705000" />
+      <workItem from="1708975628357" duration="15206000" />
     </task>
     <task id="LOCAL-00001" summary="First working build">
       <created>1708789627721</created>
@@ -120,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708873464562</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Shows currently opened apps when adding">
+      <created>1708875526897</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708875526897</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,5 +199,8 @@
     <MESSAGE value="Now tracks multiple apps" />
     <MESSAGE value="Shows currently opened apps when adding" />
     <option name="LAST_COMMIT_MESSAGE" value="Shows currently opened apps when adding" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/playtime$Main.ic" NAME="Main Coverage Results" MODIFIED="1708983722426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

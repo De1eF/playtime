@@ -1,4 +1,4 @@
-package org.example.model;
+package org.delef.model;
 
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -8,12 +8,11 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.service.FileManager;
+import org.delef.util.FileManager;
 
 @AllArgsConstructor
 public class Config extends FileManager {
     @Getter
-    @Setter
     private static Config config;
 
     @Getter
@@ -30,14 +29,28 @@ public class Config extends FileManager {
 
     @Getter
     @Setter
+    private String refillTime;
+
+    @Getter
+    @Setter
+    private RefillFrequency refillFrequency;
+
+    @Getter
+    @Setter
     private String password;
 
-    public static final String CONFIG_URI = "./src/main/resources/config.json";
+    private static void setConfig(Config config){
+        Config.config = config;
+    }
+
+    public static final String CONFIG_URI =  System.getProperty("user.home") + "\\AppData\\Local\\config.json";
 
     private static final Config DEFAULT_CONFIG = new Config(
             "01:00:00",
             new HashSet<>(),
             0,
+            "01:00:00",
+            RefillFrequency.Weekly,
             ""
     );
 
@@ -62,6 +75,16 @@ public class Config extends FileManager {
             Save();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public enum RefillFrequency {
+        Daily(86400000),
+        Weekly(604800000);
+
+        public final long millis;
+        RefillFrequency(long millis){
+            this.millis = millis;
         }
     }
 }

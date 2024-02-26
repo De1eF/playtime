@@ -1,4 +1,4 @@
-package org.example.service;
+package org.delef.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,14 +6,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class ProcessManager {
-    public static void launchGame(String path) {
-        try {
-            Runtime.getRuntime().exec(path);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static void killGame(String name) {
         try {
             Runtime.getRuntime().exec("taskkill /F /IM " + name);

@@ -1,21 +1,28 @@
-package org.example.dialog;
+package org.delef.dialog;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.time.LocalTime;
 import java.util.Arrays;
 import javax.swing.*;
-import org.example.Main;
-import org.example.model.Config;
-import org.example.service.Toast;
+import lombok.AllArgsConstructor;
+import org.delef.Main;
+import org.delef.model.Config;
+import org.delef.util.TimeManager;
+import org.delef.util.Toast;
 
+@AllArgsConstructor
 public class AddTimeDialogCreator implements DialogSetUp {
+    private TimeManager timeManager;
+
     public void show(Runnable afterConfirm) {
         //dialog
-        JDialog addTimeDialog = new JDialog(Main.getMainFrame(), "Add time");
+        JDialog addTimeDialog = new JDialog(Main.getMainForm(), "Add time");
         Dimension dialogWindowSize = new Dimension(200, 100);
         addTimeDialog.setMinimumSize(dialogWindowSize);
         addTimeDialog.setMaximumSize(dialogWindowSize);
-        JFrame mainFrame = Main.getMainFrame();
+        JFrame mainFrame = Main.getMainForm();
         addTimeDialog.setLocation(
                 new Point(
                         mainFrame.getLocation().x + mainFrame.getSize().width / 2,
@@ -25,31 +32,40 @@ public class AddTimeDialogCreator implements DialogSetUp {
 
         //panel container
         JPanel panel = new JPanel();
-        panel.setBounds(0, 0, dialogWindowSize.width, dialogWindowSize.height);
 
         //minutes to add entry text
         JTextField addMinutesTextField = new JTextField("15");
-        addMinutesTextField.setBounds(0, 50, dialogWindowSize.width, dialogWindowSize.height / 2);
+        addMinutesTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent ke) {
+                addMinutesTextField.setEditable(
+                        ke.getKeyChar() >= '0' &&
+                                ke.getKeyChar() <= '9' ||
+                                ke.getKeyChar() == (char) 8
+                );
+            }
+        });
 
         //password text
         JPasswordField passwordTextField = new JPasswordField();
-        addMinutesTextField.setBounds(0, -50, dialogWindowSize.width, dialogWindowSize.height / 2);
 
         //confirmation button
         JButton addProgramConfirmButton = new JButton("Confirm");
-        addProgramConfirmButton.setBounds(0, -100, dialogWindowSize.width, dialogWindowSize.height / 2);
         addProgramConfirmButton.addActionListener((e1) -> {
             int toastPosX = addTimeDialog.getX() + dialogWindowSize.width / 2;
             int toastPosY = addTimeDialog.getY() + dialogWindowSize.height / 2;
 
             //check if the password is correct
-            if (Arrays.equals(passwordTextField.getPassword(), Config.getConfig().getPassword().toCharArray())) {
+            if (Arrays.equals(
+                    passwordTextField.getPassword(),
+                    Config.getConfig().getPassword().toCharArray()
+            )) {
                 //add time to bank
                 LocalTime timeLeft = LocalTime.parse(Config.getConfig().getTimeBank());
                 timeLeft = timeLeft.plusMinutes(Integer.parseInt(addMinutesTextField.getText()));
-                Config.getConfig().setTimeBank(timeLeft.toString());
-                Config.Save();
+                timeManager.setTime(timeLeft);
                 afterConfirm.run();
+                addTimeDialog.dispose();
                 return;
             }
 

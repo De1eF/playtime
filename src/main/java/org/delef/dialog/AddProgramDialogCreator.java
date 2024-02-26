@@ -1,22 +1,23 @@
-package org.example.dialog;
+package org.delef.dialog;
 
 import com.sun.jna.platform.DesktopWindow;
 import com.sun.jna.platform.WindowUtils;
 import java.awt.*;
 import java.nio.file.Path;
 import javax.swing.*;
-import org.example.Main;
-import org.example.model.Config;
+import org.delef.Main;
+import org.delef.model.Config;
 
 public class AddProgramDialogCreator implements DialogSetUp {
 
     public void show(Runnable afterConfirm) {
+
         //dialog
-        JDialog addProgramDialog = new JDialog(Main.getMainFrame(), "Add app");
+        JDialog addProgramDialog = new JDialog(Main.getMainForm(), "Add app");
         Dimension dialogWindowSize = new Dimension(200, 100);
         addProgramDialog.setMinimumSize(dialogWindowSize);
         addProgramDialog.setMaximumSize(dialogWindowSize);
-        JFrame mainFrame = Main.getMainFrame();
+        JFrame mainFrame = Main.getMainForm();
         addProgramDialog.setLocation(
                 new Point(
                         mainFrame.getLocation().x + mainFrame.getSize().width / 2,
@@ -26,19 +27,21 @@ public class AddProgramDialogCreator implements DialogSetUp {
 
         //panel container
         JPanel panel = new JPanel();
-        panel.setBounds(0, 0, dialogWindowSize.width, dialogWindowSize.height);
+        panel.setBounds(
+                0,
+                0,
+                dialogWindowSize.width,
+                dialogWindowSize.height
+        );
 
         //buttons container
         JPanel panelButtons = new JPanel();
-        panelButtons.setBounds(0, 0, dialogWindowSize.width, dialogWindowSize.height);
 
         //process entry text
         JTextField addProgramTextField = new JTextField("Process name");
-        addProgramTextField.setBounds(0, 50, dialogWindowSize.width, dialogWindowSize.height / 2);
 
         //confirmation button
         JButton addProgramConfirmButton = new JButton("Confirm");
-        addProgramConfirmButton.setBounds(0, -50, dialogWindowSize.width, dialogWindowSize.height / 2);
         addProgramConfirmButton.addActionListener((e1) -> {
             Config.getConfig().getSelectedPrograms().add(addProgramTextField.getText());
             Config.Save();
@@ -48,7 +51,6 @@ public class AddProgramDialogCreator implements DialogSetUp {
 
         JTextArea processListText = new JTextArea();
         processListText.setEnabled(false);
-        processListText.setBounds(0, -100, dialogWindowSize.width, -1);
         StringBuilder stringBuilder = new StringBuilder();
         WindowUtils.getAllWindows(true)
                 .stream()
