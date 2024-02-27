@@ -3,8 +3,8 @@ package org.delef.model;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +21,7 @@ public class Config extends FileManager {
 
     @Getter
     @Setter
-    private Set<String> selectedPrograms;
+    private List<TrackedProgram> selectedPrograms;
 
     @Getter
     @Setter
@@ -47,7 +47,7 @@ public class Config extends FileManager {
 
     private static final Config DEFAULT_CONFIG = new Config(
             "01:00:00",
-            new HashSet<>(),
+            new ArrayList<>(),
             0,
             "01:00:00",
             RefillFrequency.Weekly,

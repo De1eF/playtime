@@ -32,7 +32,7 @@ public class RemoveProgramDialogCreator implements DialogSetUp {
         );
 
         //process entry text
-        JTextField removeProgramTextField = new JTextField("Process name");
+        JTextField removeProgramTextField = new JTextField("Id");
 
         //password text
         JPasswordField passwordTextField = new JPasswordField();
@@ -49,19 +49,9 @@ public class RemoveProgramDialogCreator implements DialogSetUp {
                     Config.getConfig().getPassword().toCharArray()
             )) {
                 String toRemove = removeProgramTextField.getText();
-                if (!Config.getConfig().getSelectedPrograms().contains(toRemove)) {
-                    //throw a toast if the program is not in list
-                    new Toast(
-
-                            "No such app in list",
-                            toastPosX,
-                            toastPosY
-                    ).showToast();
-                    return;
-                }
 
                 //remove program from tracked list
-                Config.getConfig().getSelectedPrograms().remove(toRemove);
+                Config.getConfig().getSelectedPrograms().remove(Integer.parseInt(toRemove));
                 Config.Save();
                 afterConfirm.run();
                 removeProgramDialog.dispose();

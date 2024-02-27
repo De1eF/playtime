@@ -19,13 +19,6 @@ public class FirstLaunchDialogCreator implements DialogSetUp {
         Dimension dialogWindowSize = new Dimension(250, 150);
         addProgramDialog.setMinimumSize(dialogWindowSize);
         addProgramDialog.setMaximumSize(dialogWindowSize);
-        JFrame mainFrame = Main.getMainForm();
-        addProgramDialog.setLocation(
-                new Point(
-                        mainFrame.getLocation().x + mainFrame.getSize().width / 2,
-                        mainFrame.getLocation().y + mainFrame.getSize().height / 2
-                )
-        );
 
         //close program if not configured
         addProgramDialog.addWindowListener(new WindowAdapter()
@@ -45,7 +38,7 @@ public class FirstLaunchDialogCreator implements DialogSetUp {
                 dialogWindowSize.width,
                 dialogWindowSize.height);
 
-        //refill frequency entry text
+        //refill frequency combo box
         JComboBox<Config.RefillFrequency> refillFrequencyComboBox = new JComboBox<>(
                 new Config.RefillFrequency[]{
                         Config.RefillFrequency.Daily,

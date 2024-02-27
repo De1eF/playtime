@@ -16,6 +16,7 @@ import org.delef.dialog.ExitDialogCreator;
 import org.delef.dialog.FirstLaunchDialogCreator;
 import org.delef.model.Config;
 import org.delef.model.TimeTrackListener;
+import org.delef.model.TrackedProgram;
 import org.delef.util.ProcessManager;
 import org.delef.util.TimeManager;
 
@@ -29,7 +30,7 @@ public class Main {
     private static final ExitDialogCreator exitDialogCreator = new ExitDialogCreator();
     private static final FirstLaunchDialogCreator configurationDialogCreator = new FirstLaunchDialogCreator();
     @Getter
-    private static final LocalTime ZERO_TIME = LocalTime.of(0,0,0);
+    private static final LocalTime ZERO_TIME = LocalTime.of(0, 0, 0);
 
     public static void main(String[] args) {
         //FlatLaf
@@ -50,7 +51,7 @@ public class Main {
 
             //Only start base frame after configuration is complete
             if (Config.getConfig().getPassword().isEmpty()) {
-                configurationDialogCreator.show(()-> {
+                configurationDialogCreator.show(() -> {
                     Config.getConfig().setTimeBank(Config.getConfig().getRefillTime());
                     Config.Save();
                     createMainForm(icon);
@@ -58,10 +59,6 @@ public class Main {
             } else {
                 createMainForm(icon);
             }
-
-            //set up minimization to the system tray
-            setUpSystemTray(icon);
-            setUpWindowCloseBehaviour();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -81,7 +78,8 @@ public class Main {
                     mainForm.setVisible(true);
                 },
                 //when close from tray
-                (eE) -> exitDialogCreator.show(() -> {})
+                (eE) -> exitDialogCreator.show(() -> {
+                })
         );
         trayIcon.setImageAutoSize(true);
 
@@ -89,11 +87,9 @@ public class Main {
 
     private static void setUpWindowCloseBehaviour() {
         //setting up on close behaviour
-        mainForm.addWindowListener(new WindowAdapter()
-        {
+        mainForm.addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e)
-            {
+            public void windowClosing(WindowEvent e) {
                 try {
                     assert trayIcon != null;
                     tray.add(trayIcon);
@@ -111,11 +107,16 @@ public class Main {
             mainForm = new JFrame("Playtime");
             mainForm.setContentPane(new BaseForm().getPanel_main());
             mainForm.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            Dimension windowSize = new Dimension(750, 300);
+            Dimension windowSize = new Dimension(800, 350);
             mainForm.setMinimumSize(windowSize);
             mainForm.setMaximumSize(windowSize);
-            mainForm.setLocation(new Point(250, 250));
+            mainForm.setLocation(new Point(0, 0));
             mainForm.setIconImage(icon);
+
+            //set up minimization to the system tray
+            setUpSystemTray(icon);
+            setUpWindowCloseBehaviour();
+
             mainForm.pack();
             mainForm.setVisible(true);
         } catch (Exception e) {
@@ -135,8 +136,11 @@ public class Main {
             //close tracked games when time is up
             if (timeIsUp) {
                 timer.setEnabled(false);
-                for (String processName : Config.getConfig().getSelectedPrograms()) {
-                    ProcessManager.killGame(processName + ".exe");
+                for (TrackedProgram program : Config.getConfig().getSelectedPrograms()) {
+                    ProcessManager.killGame(
+                            program.getName(),
+                            program.getTrackByTitle()
+                    );
                 }
                 return;
             }
@@ -144,8 +148,13 @@ public class Main {
             //When one of selected programs is running, start counting time down
             Set<Boolean> runningPrograms = new HashSet<>();
             try {
-                for (String processName : Config.getConfig().getSelectedPrograms()) {
-                    runningPrograms.add(ProcessManager.isRunning(processName + ".exe"));
+                for (TrackedProgram program : Config.getConfig().getSelectedPrograms()) {
+                    runningPrograms.add(
+                            ProcessManager.isRunning(
+                                    program.getName(),
+                                    program.getTrackByTitle()
+                            )
+                    );
                 }
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
@@ -193,16 +202,16 @@ public class Main {
         PopupMenu popup = new PopupMenu();
 
         //tray exit button
-        MenuItem popupMenuItem=new MenuItem("Exit");
+        MenuItem popupMenuItem = new MenuItem("Exit");
         popupMenuItem.addActionListener(onExit);
         popup.add(popupMenuItem);
 
         //tray open button
-        popupMenuItem=new MenuItem("Open");
+        popupMenuItem = new MenuItem("Open");
         popupMenuItem.addActionListener(onOpen);
         popup.add(popupMenuItem);
 
         //setting up tray icon
-        return new TrayIcon(trayImage, "" ,popup);
+        return new TrayIcon(trayImage, "", popup);
     }
 }

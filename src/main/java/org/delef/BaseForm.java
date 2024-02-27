@@ -6,6 +6,7 @@ import org.delef.dialog.AddProgramDialogCreator;
 import org.delef.dialog.AddTimeDialogCreator;
 import org.delef.dialog.RemoveProgramDialogCreator;
 import org.delef.model.Config;
+import org.delef.model.TrackedProgram;
 
 public class BaseForm {
     @Getter
@@ -58,8 +59,12 @@ public class BaseForm {
         textArea_selectedApps.setText("...");
 
         StringBuilder stringBuilder = new StringBuilder();
-        for (String programName : Config.getConfig().getSelectedPrograms()) {
-            stringBuilder.append("-").append(programName).append("\n");
+        for (TrackedProgram program : Config.getConfig().getSelectedPrograms()) {
+            stringBuilder
+                    .append(Config.getConfig().getSelectedPrograms().indexOf(program))
+                    .append(" | ")
+                    .append(program.getName())
+                    .append("\n");
         }
         textArea_selectedApps.setText(stringBuilder.toString());
     }
