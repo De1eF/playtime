@@ -45,7 +45,7 @@ public class AddProgramDialogCreator implements DialogSetUp {
         JPanel panelButtons = new JPanel();
 
         //process entry text
-        JTextField addProgramTextField = new JTextField("Id");
+        JTextField addProgramTextField = new JTextField("Process name / title");
         addProgramTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent ke) {
@@ -68,11 +68,8 @@ public class AddProgramDialogCreator implements DialogSetUp {
         //confirmation button
         JButton addProgramConfirmButton = new JButton("Confirm");
         addProgramConfirmButton.addActionListener((e1) -> {
-            DesktopWindow dw =  openedWindows.get(Integer.parseInt(addProgramTextField.getText()));
             boolean byTitle = trackType.getSelectedItem() == TrackedProgram.TrackType.ByTitle;
-            String name = byTitle ?
-                    dw.getTitle():
-                    ProcessManager.getNameFromPath(dw.getFilePath());
+            String name = addProgramTextField.getText();
             if (name.contains("*")) {
                 name = name.split("\\*")[0] + "*";
             }
@@ -108,8 +105,8 @@ public class AddProgramDialogCreator implements DialogSetUp {
 
         //adding components to panel
         panelButtons.add(addProgramTextField);
-        panelButtons.add(addProgramConfirmButton);
         panelButtons.add(trackType);
+        panelButtons.add(addProgramConfirmButton);
         panel.add(panelButtons);
         panel.add(processListText);
 
