@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d84527d-6bf6-450c-aefa-6a3a27146da4" name="Changes" comment="When adding programs, requires to enter the name that will be tracked for more flexibility with different programs">
+    <list default="true" id="5d84527d-6bf6-450c-aefa-6a3a27146da4" name="Changes" comment="Fixed, where only numbers can be entered into tracked program name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/delef/dialog/AddProgramDialogCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/delef/dialog/AddProgramDialogCreator.java" afterDir="false" />
     </list>
@@ -137,7 +137,7 @@
       <workItem from="1708937008773" duration="3705000" />
       <workItem from="1708975628357" duration="15206000" />
       <workItem from="1709027131375" duration="750000" />
-      <workItem from="1709030591982" duration="12398000" />
+      <workItem from="1709030591982" duration="12716000" />
     </task>
     <task id="LOCAL-00001" summary="First working build">
       <created>1708789627721</created>
@@ -167,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709043200968</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="When adding programs, requires to enter the name that will be tracked for more flexibility with different programs">
+      <created>1709044020553</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709044020553</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +197,8 @@
     <MESSAGE value="Shows currently opened apps when adding" />
     <MESSAGE value="Now gives ability to track either by window title, or by program name" />
     <MESSAGE value="When adding programs, requires to enter the name that will be tracked for more flexibility with different programs" />
-    <option name="LAST_COMMIT_MESSAGE" value="When adding programs, requires to enter the name that will be tracked for more flexibility with different programs" />
+    <MESSAGE value="Fixed, where only numbers can be entered into tracked program name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed, where only numbers can be entered into tracked program name" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

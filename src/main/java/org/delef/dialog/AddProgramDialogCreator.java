@@ -3,8 +3,6 @@ package org.delef.dialog;
 import com.sun.jna.platform.DesktopWindow;
 import com.sun.jna.platform.WindowUtils;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -46,16 +44,7 @@ public class AddProgramDialogCreator implements DialogSetUp {
 
         //process entry text
         JTextField addProgramTextField = new JTextField("Process name / title");
-        addProgramTextField.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent ke) {
-                addProgramTextField.setEditable(
-                        ke.getKeyChar() >= '0' &&
-                                ke.getKeyChar() <= '9' ||
-                                ke.getKeyChar() == (char) 8
-                );
-            }
-        });
+        addProgramTextField.setToolTipText("Use '*' as wildcard");
 
         //track by title combo box
         JComboBox<TrackedProgram.TrackType> trackType = new JComboBox<>(
@@ -70,9 +59,6 @@ public class AddProgramDialogCreator implements DialogSetUp {
         addProgramConfirmButton.addActionListener((e1) -> {
             boolean byTitle = trackType.getSelectedItem() == TrackedProgram.TrackType.ByTitle;
             String name = addProgramTextField.getText();
-            if (name.contains("*")) {
-                name = name.split("\\*")[0] + "*";
-            }
             Config.getConfig().getSelectedPrograms()
                     .add(
                             new TrackedProgram(
